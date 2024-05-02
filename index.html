@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>證書任務一</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+    .tag-group{
+        display: flex;
+        gap: 1rem;
+    }
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5rem 1.5rem;
+    }
+</style>
+<body>
+    <div id="root" class="container"></div>
+
+
+
+    <script type="module" src="./collection-card.mjs"></script>
+    <script type="module" src="./collection-tag.mjs"></script>
+    <script>
+    const root=document.getElementById('root')
+    const data=[
+        {
+            picSrc:"work-image1.png",
+            CollectionTitle:"星際旅行訂票平台",
+            CollectionSubTitle:"悠遊宇宙的夢想，從這裡開始實現",
+            tag:['網頁設計','響應式設計','BootStrap']
+    },{
+        picSrc:"work-image2.png",
+            CollectionTitle:"理財App",
+            CollectionSubTitle:"連動帳戶與行動支付，讓 AI 提供您最好的理財建議",
+            tag:['APP設計','ios','React']
+    },{
+        picSrc:"work-image3.png",
+            CollectionTitle:"醫美診所官網",
+            CollectionSubTitle:"永保青春的秘密，從粹究開始遊宇宙的夢想，從這裡開始實現",
+            tag:['網頁設計','響應式設計','WordPress']
+    },{
+        picSrc:"work-image4.png",
+            CollectionTitle:"美美美早餐店 POS 機 UI Design",
+            CollectionSubTitle:"訂單送單一目瞭然，自動報表分析好輕鬆",
+            tag:['UI設計','前端開發','Wix']
+    },{
+        picSrc:"work-image5.png",
+            CollectionTitle:"電影院訂票系統",
+            CollectionSubTitle:"悠遊宇宙的夢想，從這裡開始實現",
+            tag:['前端開發','後端支援','Vue']
+    },{
+        picSrc:"work-image6.png",
+            CollectionTitle:"巧克巧克形象官網設計",
+            CollectionSubTitle:"悠遊宇宙的夢想，從這裡開始實現",
+            tag:['UI設計','設計系統','網路電商']
+    }
+]   
+    let str=''
+    const render=data.map((v,i)=>{
+        let tagStr=''
+        v.tag.map((v)=>{
+            tagStr+=`<collection-tag tagText="${v}"></collection-tag>`
+        })
+        str+=`
+        <div class="card-group">
+        <collection-card picSrc="./assets/picture/${v.picSrc}"
+        CollectionTitle="${v.CollectionTitle}"
+        CollectionSubTitle="${v.CollectionSubTitle}"></collection-card>
+        <div class='tag-group'>${tagStr}</div>
+        
+    </div>
+        `
+    })
+    root.innerHTML=str
+    </script>
+</body>
+</html>
